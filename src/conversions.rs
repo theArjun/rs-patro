@@ -2,11 +2,29 @@ use crate::constants::START_ENGLISH_DATE;
 use crate::month_end::BS_CALENDAR_MONTH_ENDS;
 use chrono::NaiveDate;
 use std::error::Error;
-
+use crate::utils::get_digit_in_devanagari;
 pub struct BSDate {
     pub year: u16,
     pub month: u8,
     pub day: u8,
+}
+
+impl BSDate {
+    pub fn new(year: u16, month: u8, day: u8) -> BSDate {
+        BSDate { year, month, day }
+    }
+}
+
+impl std::fmt::Display for BSDate {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(
+            f,
+            "{}-{}-{}",
+            get_digit_in_devanagari(self.year),
+            get_digit_in_devanagari(self.month as u16),
+            get_digit_in_devanagari(self.day as u16)
+        )
+    }
 }
 
 pub fn ad_to_bs(ad_date: NaiveDate) -> Result<BSDate, Box<dyn Error>> {
