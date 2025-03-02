@@ -51,6 +51,39 @@ This document outlines the planned features and development roadmap for `rs-patr
 * **Integration with other Rust libraries:**
     * Consider integration with popular libraries such as `serde`, `chrono` and others.
 
+## Usage Examples
+
+1. Convert a Gregorian date to a Nepali date:
+```rust
+mod constants;
+mod conversions;
+mod month_end;
+mod utils;
+use chrono::NaiveDate;
+use conversions::BSDate;
+
+fn main() {
+    let ad_date = NaiveDate::from_ymd_opt(2025,3,2).unwrap();
+    let ad_date = BSDate::from_ad(ad_date).unwrap();
+    println!("AD Date: {}", ad_date);
+}
+```
+
+2. Convert a Nepali date to a Gregorian date:
+```rust
+mod constants;
+mod conversions;
+mod month_end;
+mod utils;
+use conversions::BSDate;
+
+fn main() {
+    let bs_date = BSDate::new(2081,11,18);
+    let ad_date = bs_date.to_ad().unwrap();
+    println!("AD Date: {}", ad_date);
+}
+```
+
 ## Contribution
 
 Contributions are welcome! Please refer to the `CONTRIBUTING.md` file for guidelines on how to contribute.
