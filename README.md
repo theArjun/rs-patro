@@ -3,7 +3,9 @@
 This document outlines the planned features and development roadmap for `rs-patro`, a Rust library designed to provide comprehensive date and time functionalities, potentially including support for regional calendars and time zones.
 
 ## Core Features (Initial Release)
-
+* **Validation and Error Handling:**
+    * Input validation for date and time values.
+    * Error handling for invalid inputs.
 * **Gregorian Calendar Support:**
     * Fundamental date and time operations based on the Gregorian calendar.
     * Date and time arithmetic (addition, subtraction).
@@ -83,6 +85,9 @@ fn main() {
     println!("AD Date: {}", ad_date);
 }
 ```
+
+## Ultimate Plan
+- Create a python wrapper for the library and use it as drop in replacement for `nepali_datetime` library.
 
 ## Contribution
 
